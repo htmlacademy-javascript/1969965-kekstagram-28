@@ -39,24 +39,27 @@ getNumberFromString(-1);
 
 // Четвёртая функция
 
-/*
-Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку, дополненную указанными символами до заданной длины. Символы добавляются в начало строки. Если исходная строка превышает заданную длину, она не должна обрезаться. Если «добивка» слишком длинная, она обрезается с конца.
+const padString = (string, minLength, padChar) => {
 
-Эта функция нам пригодится для формирования адресов файлов. Примеры её использования:
+  if (string.length < minLength) {
+    const lengthNeeded = minLength - string.length;
+    if (padChar.length > lengthNeeded) {
+      return padChar.slice(0, lengthNeeded) + string;
+    } else if (padChar.length === lengthNeeded) {
+      return padChar + string;
+    } else if (padChar.length < lengthNeeded) {
+      const charsDivision = lengthNeeded / padChar.length;
+      let result = padChar.repeat(charsDivision) + string;
+      if (lengthNeeded % padChar.length !== 0) {
+        result = padChar.repeat(Math.floor(charsDivision)) + string;
+        const charsToAdd = lengthNeeded - result.length;
+        return padChar.slice(0, charsToAdd - 1) + result;
+      }
+      return result;
+    }
+  }
+  return string;
+};
 
-// Добавочный символ использован один раз
-имя_функции('1', 2, '0');      // Результат: строка '01'
+padString('q', 4, 'we');
 
-// Добавочный символ использован три раза
-имя_функции('1', 4, '0');      // Результат: строка '0001'
-
-// Добавочные символы обрезаны с конца
-имя_функции('q', 4, 'werty');  // Результат: строка 'werq'
-
-// Добавочные символы использованы полтора раза
-имя_функции('q', 4, 'we');     // Результат: строка 'wweq'
-
-// Добавочные символы не использованы, исходная строка не изменена
-имя_функции('qwerty', 4, '0'); // Результат: строка 'qwerty'
-Попробуйте не использовать при этом функцию padStart() =)
-*/
