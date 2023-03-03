@@ -18,7 +18,7 @@ const createPicture = (index) => (
   {
     id: index,
     url: `../photos/${index}.jpg`,
-    description: PHOTO_DESCRIPTIONS[getPhotoDescription()],
+    description: PHOTO_DESCRIPTIONS[getPhotoDescription()], // вот здесь не получилось через импорт
     likes: getRandomInteger(15, 200),
     comments: Array.from({length: getNumberOfComments()}, createComment)
   }
