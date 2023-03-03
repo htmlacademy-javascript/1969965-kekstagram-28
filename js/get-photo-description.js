@@ -29,6 +29,6 @@ const PHOTO_DESCRIPTIONS = [
   'Пришлось идти пешком...'
 ];
 
-const getPhotoDescription = createSerialNumberGenerator();
+const getPhotoDescription = createSerialNumberGenerator(); // если делать условно: const getPhoto = PHOTO_DESCRIPTIONS[getPhotoDescription()], то в create-pictures.js он уже не рабоатет
 
 export {getPhotoDescription, PHOTO_DESCRIPTIONS};
