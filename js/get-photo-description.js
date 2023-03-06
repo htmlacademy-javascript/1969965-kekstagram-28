@@ -1,7 +1,6 @@
 import { createSerialNumberGenerator } from './serial-generator.js';
 
 const PHOTO_DESCRIPTIONS = [
-  'описание фото',
   'Городской пляж',
   'Указатель на пляж',
   'Вид на море со скал',
@@ -29,6 +28,7 @@ const PHOTO_DESCRIPTIONS = [
   'Пришлось идти пешком...'
 ];
 
-const getPhotoDescription = createSerialNumberGenerator(); // если делать условно: const getPhoto = PHOTO_DESCRIPTIONS[getPhotoDescription()], то в create-pictures.js он уже не рабоатет
+const generateDescriptionIndex = createSerialNumberGenerator();
+const getPhotoDescription = () => PHOTO_DESCRIPTIONS[generateDescriptionIndex() - 1];
 
-export {getPhotoDescription, PHOTO_DESCRIPTIONS};
+export {getPhotoDescription};
