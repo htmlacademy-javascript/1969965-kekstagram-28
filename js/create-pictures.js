@@ -1,7 +1,7 @@
 import { getRandomInteger } from './get-random-integer.js';
 import { getRandomName } from './get-random-name.js';
 import { getRandomMessage } from './get-random-message.js';
-import { getPhotoDescription, PHOTO_DESCRIPTIONS } from './get-photo-description.js'; // здесь должна одна быть функция getPhotoDescription
+import { getPhotoDescription} from './get-photo-description.js';
 import { getNumberOfComments, getNumberOfPictures } from './data.js';
 import { generateCommentId } from './generate-comment-id.js';
 
@@ -18,7 +18,7 @@ const createPicture = (index) => (
   {
     id: index,
     url: `../photos/${index}.jpg`,
-    description: PHOTO_DESCRIPTIONS[getPhotoDescription()], // вот здесь не получилось через импорт, вся конструкция перестаёт работать
+    description: getPhotoDescription(),
     likes: getRandomInteger(15, 200),
     comments: Array.from({length: getNumberOfComments()}, createComment)
   }
