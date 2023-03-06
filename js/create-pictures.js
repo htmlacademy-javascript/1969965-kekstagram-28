@@ -1,13 +1,13 @@
-import { getRandomInteger } from './get-random-integer.js';
-import { getRandomName } from './get-random-name.js';
-import { getRandomMessage } from './get-random-message.js';
-import { getPhotoDescription} from './get-photo-description.js';
+import { getRandomInteger } from './helpers/get-random-integer.js';
+import { getRandomName } from './helpers/get-random-name.js';
+import { getRandomMessage } from './helpers/get-random-message.js';
+import { getPhotoDescription } from './helpers/get-photo-description.js';
 import { getNumberOfComments, getNumberOfPictures } from './data.js';
-import { generateCommentId } from './generate-comment-id.js';
+import { getCommentId } from './helpers/get-comment-id.js';
 
 const createComment = () => (
   {
-    id: generateCommentId(),
+    id: getCommentId(),
     avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
     message: getRandomMessage(),
     name: getRandomName()

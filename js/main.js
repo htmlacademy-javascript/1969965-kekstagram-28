@@ -1,3 +1,3 @@
-import {getPictures} from './create-pictures.js';
+import { getPictures } from './create-pictures.js';
 
 getPictures();
