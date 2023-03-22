@@ -2,6 +2,7 @@ import { thumbnailsList } from './gallery.js';
 import { renderComments } from './render-comments.js';
 import { showBigPicture } from './show-big-picture.js';
 
+
 const renderGallery = (thumbnails) => {
   thumbnailsList.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
