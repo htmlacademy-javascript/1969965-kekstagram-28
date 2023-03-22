@@ -7,6 +7,7 @@ const bigPicture = document.querySelector('.big-picture__img img');
 const likesCount = bigPictureModal.querySelector('.likes-count');
 const commentsCount = bigPictureModal.querySelector('.comments-count');
 const socialCaption = bigPictureModal.querySelector('.social__caption');
+const socialCommentsContainer = bigPictureModal.querySelector('.social__comments');
 
-export { thumbnailsList, bigPictureModal, pictureCancelButton, socialCommentCount, commentsLoader, bigPicture, likesCount, commentsCount, socialCaption };
+export { thumbnailsList, bigPictureModal, pictureCancelButton, socialCommentCount, commentsLoader, bigPicture, likesCount, commentsCount, socialCaption, socialCommentsContainer };
 
