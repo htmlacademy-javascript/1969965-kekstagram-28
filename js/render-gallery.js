@@ -1,7 +1,6 @@
 import { thumbnailsList } from './gallery.js';
 import { renderComments } from './render-comments.js';
 import { showBigPicture } from './show-big-picture.js';
-// import { makeThumbnails } from './make-thumbnails.js';
 
 const renderGallery = (thumbnails) => {
   thumbnailsList.addEventListener('click', (evt) => {
@@ -14,7 +13,6 @@ const renderGallery = (thumbnails) => {
     showBigPicture(picture);
     renderComments(picture);
   });
-  // makeThumbnails();
 };
 
 export {renderGallery};
