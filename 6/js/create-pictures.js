@@ -8,7 +8,7 @@ import { getCommentId } from './helpers/get-comment-id.js';
 const createComment = () => (
   {
     id: getCommentId(),
-    avatar: `../img/avatar-${getRandomInteger(1, 6)}.svg`,
+    avatar: `./img/avatar-${getRandomInteger(1, 6)}.svg`,
     message: getRandomMessage(),
     name: getRandomName()
   }
@@ -17,7 +17,7 @@ const createComment = () => (
 const createPicture = (index) => (
   {
     id: index,
-    url: `../photos/${index}.jpg`,
+    url: `./photos/${index}.jpg`,
     description: getPhotoDescription(),
     likes: getRandomInteger(15, 200),
     comments: Array.from({length: getNumberOfComments()}, createComment)
