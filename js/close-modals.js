@@ -1,6 +1,6 @@
 import { bigPictureModal, pictureCancelButton } from './gallery.js';
 import { isEscapeKey } from './helpers/is-escape-key.js';
-import { uploadCancelButton, imageUploadModal } from './show-upload-modal.js';
+import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-upload-modal.js';
 
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
@@ -25,6 +25,7 @@ const closeUploadPictureModal = () => {
   imageUploadModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
   uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
+  uploadFileField.value = '';
   document.removeEventListener('keydown', onUploadModalKeydown);
 };
 
