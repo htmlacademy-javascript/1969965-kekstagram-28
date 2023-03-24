@@ -7,5 +7,10 @@ const getNumberOfPictures = () => {
   return NUMBER_OF_PICTURES;
 };
 
-export { getNumberOfComments, getNumberOfPictures };
+const getScaleStep = () => {
+  const STEP = 25;
+  return STEP;
+};
+
+export { getNumberOfComments, getNumberOfPictures, getScaleStep };
 
