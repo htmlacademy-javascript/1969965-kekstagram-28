@@ -8,16 +8,16 @@ const closeModal = () => {
   document.removeEventListener('keydown', onModalKeydown);
 };
 
-const onModalKeydown = (evt) => {
+function onModalKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeModal();
   }
-};
+}
 
-const onEscapeButtonClick = (evt) => {
+function onEscapeButtonClick (evt) {
   evt.preventDefault();
   closeModal();
-};
+}
 
 export { onModalKeydown, onEscapeButtonClick, closeModal };
