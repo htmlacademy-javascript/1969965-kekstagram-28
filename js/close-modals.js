@@ -1,6 +1,9 @@
 import { bigPictureModal, pictureCancelButton } from './gallery.js';
 import { isEscapeKey } from './helpers/is-escape-key.js';
 import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-upload-modal.js';
+import { resetScale } from './change-scale.js';
+import { uploadForm } from './validation.js';
+import { pristine } from './validation.js';
 
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
@@ -26,13 +29,21 @@ const closeUploadPictureModal = () => {
   document.body.classList.remove('modal-open');
   uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
   uploadFileField.value = '';
+  resetScale();
+  uploadForm.reset();
+  pristine.reset();
   document.removeEventListener('keydown', onUploadModalKeydown);
 };
 
 function onUploadModalKeydown (evt) {
+  const activeElement = document.activeElement.attributes.type.value;
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeUploadPictureModal();
+    if (activeElement === 'text') {
+      evt.stopPropagation();
+    } else {
+      closeUploadPictureModal();
+    }
   }
 }
 
@@ -41,4 +52,4 @@ function onUploadEscapeButtonClick (evt) {
   closeUploadPictureModal();
 }
 
-export { onBigPicModalKeydown, onBigPicEscapeButtonClick, onUploadEscapeButtonClick, onUploadModalKeydown};
+export { onBigPicModalKeydown, onBigPicEscapeButtonClick, onUploadEscapeButtonClick, onUploadModalKeydown, closeUploadPictureModal};
