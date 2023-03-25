@@ -73,7 +73,7 @@ function checkHashtag (hashtags) {
 }
 
 pristine.addValidator(
-  hashtagInputField, 
+  hashtagInputField,
   validateHashtags,
   'text-text-text'
 );
@@ -81,6 +81,3 @@ pristine.addValidator(
 uploadForm.addEventListener('submit', onUploadFormSubmit);
 
 export { hashtagInputField, commentInputField, activeElement, uploadForm, pristine} ;
-
-
-
