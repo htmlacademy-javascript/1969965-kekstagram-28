@@ -37,6 +37,11 @@ function scaling(evt) {
   uploadedImage.style.transform = `scale(${currentValue / 100})`;
 }
 
+const resetScale = () => {
+  scaleValueField.value = '100%';
+  uploadedImage.style.transform = 'scale(1)';
+};
+
 changeScaleValue();
 
-export {changeScaleValue};
+export {changeScaleValue, scaleValueField, resetScale};
