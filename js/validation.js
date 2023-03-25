@@ -1,43 +1,14 @@
 import { getMaxHashtagLength } from './data.js';
 import { showSuccessMessage, showErrorMessage } from './error-success-message.js';
 
-const uploadForm = document.querySelector('#upload-select-image');
-const hashtagInputField = uploadForm.querySelector('.text__hashtags');
-const commentInputField = uploadForm.querySelector('.text__description');
+const form = document.querySelector('#upload-select-image');
+
+const hashtagInputField = form.querySelector('.text__hashtags');
+const commentInputField = form.querySelector('.text__description');
 const activeElement = document.activeElement;
 const HASHTAG_REG_EXP = /^#[a-zа-яё0-9]{1,19}$/i;
 
-/*
-
-Здесь я сделала простую проверку с оф сайта пристин, проверка текстового поля на то, чтобы первая буква была большой. При этом все проверки с хештегами и т.п. я убирала. В итоге, сделав всё по инструкции с оф сайта, я получила такой результат, что код с проверкой работает, валидная проверка выводила в консоль сообщение true, невалидная false, но сообщение не появлялось
-
-*/
-
-const pristine = new Pristine(uploadForm, { // здесь я оставляла только форму, без дополнительных настроек, но и с ними не работает
-  classTo: 'form__item',
-  errorTextParent: 'form__item',
-  errorTextClass: 'form__error'
-});
-
-/*
-Здесь добавление валидатора и навешивание обработчика на форму
-*/
-
-// pristine.addValidator(
-//   commentInputField,
-//   (value) => {
-//     if (value.length && value[0] === value[0].toUpperCase()){
-//       return true;
-//     }
-//     return false;
-//   }, 'The first character must be capitalized', 2, false
-// );
-
-// uploadForm.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
-//   const valid = pristine.validate();
-//   console.log(valid);
-// });
+const pristine = new Pristine(form);
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
@@ -75,9 +46,9 @@ function checkHashtag (hashtags) {
 pristine.addValidator(
   hashtagInputField,
   validateHashtags,
-  'text-text-text'
+  'Неправильно заполнены хештеги'
 );
 
-uploadForm.addEventListener('submit', onUploadFormSubmit);
+form.addEventListener('submit', onUploadFormSubmit);
 
-export { hashtagInputField, commentInputField, activeElement, uploadForm, pristine} ;
+export { hashtagInputField, commentInputField, activeElement, form, pristine} ;
