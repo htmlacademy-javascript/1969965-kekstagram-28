@@ -56,7 +56,11 @@ uploadForm.addEventListener('submit', onUploadFormSubmit);
 
 export { hashtagInputField, commentInputField, activeElement, uploadForm, pristine} ;
 
+/*
 
+Здесь я сделала простую проверку с оф сайта пристин, проверка текстового поля на то, чтобы первая буква была большой. При этом все проверки с хештегами и т.п. я убирала. В итоге, сделав всё по инструкции с оф сайта, я получила такой результат, что код с проверкой работает, валидная проверка выводила в консоль сообщение true, невалидная false, но сообщение не появлялось
+
+*/
 // pristine.addValidator(
 
 //   commentInputField,
