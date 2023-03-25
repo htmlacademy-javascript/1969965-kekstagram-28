@@ -12,5 +12,10 @@ const getScaleStep = () => {
   return STEP;
 };
 
-export { getNumberOfComments, getNumberOfPictures, getScaleStep };
+const getMaxHashtagLength = () => {
+  const MAX_HASHTAGS_LENGTH = 5;
+  return MAX_HASHTAGS_LENGTH;
+};
+
+export { getNumberOfComments, getNumberOfPictures, getScaleStep, getMaxHashtagLength };
 
