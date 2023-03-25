@@ -1,5 +1,5 @@
 const getNumberOfComments = () => {
-  const NUMBER_OF_COMMENTS = 2;
+  const NUMBER_OF_COMMENTS = 15;
   return NUMBER_OF_COMMENTS;
 };
 const getNumberOfPictures = () => {

@@ -1,4 +1,4 @@
+import { renderGallery } from './render-gallery.js';
 import { makeThumbnails } from './make-thumbnails.js';
 
-makeThumbnails();
-
+renderGallery(makeThumbnails());
