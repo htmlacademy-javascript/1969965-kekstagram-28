@@ -7,11 +7,37 @@ const commentInputField = uploadForm.querySelector('.text__description');
 const activeElement = document.activeElement;
 const HASHTAG_REG_EXP = /^#[a-zа-яё0-9]{1,19}$/i;
 
-const pristine = new Pristine(uploadForm, {
+/*
+
+Здесь я сделала простую проверку с оф сайта пристин, проверка текстового поля на то, чтобы первая буква была большой. При этом все проверки с хештегами и т.п. я убирала. В итоге, сделав всё по инструкции с оф сайта, я получила такой результат, что код с проверкой работает, валидная проверка выводила в консоль сообщение true, невалидная false, но сообщение не появлялось
+
+*/
+
+const pristine = new Pristine(uploadForm, { // здесь я оставляла только форму, без дополнительных настроек, но и с ними не работает
   classTo: 'form__item',
   errorTextParent: 'form__item',
   errorTextClass: 'form__error'
 });
+
+/*
+Здесь добавление валидатора и навешивание обработчика на форму
+*/
+
+// pristine.addValidator(
+//   commentInputField,
+//   (value) => {
+//     if (value.length && value[0] === value[0].toUpperCase()){
+//       return true;
+//     }
+//     return false;
+//   }, 'The first character must be capitalized', 2, false
+// );
+
+// uploadForm.addEventListener('submit', (evt) => {
+//   evt.preventDefault();
+//   const valid = pristine.validate();
+//   console.log(valid);
+// });
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
@@ -47,7 +73,7 @@ function checkHashtag (hashtags) {
 }
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputField, 
   validateHashtags,
   'text-text-text'
 );
@@ -56,26 +82,5 @@ uploadForm.addEventListener('submit', onUploadFormSubmit);
 
 export { hashtagInputField, commentInputField, activeElement, uploadForm, pristine} ;
 
-/*
 
-Здесь я сделала простую проверку с оф сайта пристин, проверка текстового поля на то, чтобы первая буква была большой. При этом все проверки с хештегами и т.п. я убирала. В итоге, сделав всё по инструкции с оф сайта, я получила такой результат, что код с проверкой работает, валидная проверка выводила в консоль сообщение true, невалидная false, но сообщение не появлялось
 
-*/
-// pristine.addValidator(
-
-//   commentInputField,
-//   (value) => {
-//     if (value.length && value[0] === value[0].toUpperCase()){
-//       return true;
-//     }
-//     return false;
-//   }, 'The first character must be capitalized', 2, false
-// );
-
-// uploadForm.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
-//   const valid = pristine.validate();
-//   console.log(valid);
-// });
-
-// console.log(prist);
