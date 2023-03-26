@@ -17,6 +17,7 @@ const pristine = new Pristine(form);
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
+  console.log(getHashtagsList());
   const valid = pristine.validate();
   if (valid) {
     showSuccessMessage();
@@ -53,7 +54,7 @@ function checkTextArea () {
 
 function checkSingleHashtagLength () {
   const hashtags = getHashtagsList();
-  return hashtags.some((elem) => elem !== '#');
+  return hashtags.every((elem) => elem !== '#');
 }
 
 pristine.addValidator(
