@@ -17,7 +17,6 @@ const pristine = new Pristine(form);
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
-  console.log(getHashtagsList());
   const valid = pristine.validate();
   if (valid) {
     showSuccessMessage();
