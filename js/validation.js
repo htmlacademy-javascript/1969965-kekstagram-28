@@ -94,8 +94,4 @@ pristine.addValidator(
 
 form.addEventListener('submit', onUploadFormSubmit);
 
-// hashtagInputField.addEventListener('input', () => {
-//   console.log(hashtags;
-// });
-
 export { hashtagInputField, commentInputField, activeElement, form, pristine} ;
