@@ -4,6 +4,7 @@ import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-up
 import { resetScale } from './change-scale.js';
 import { form } from './validation.js';
 import { pristine } from './validation.js';
+import { resetEffects } from './change-filters.js';
 
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
@@ -30,6 +31,7 @@ const closeUploadPictureModal = () => {
   uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
   uploadFileField.value = '';
   resetScale();
+  resetEffects();
   form.reset();
   pristine.reset();
   document.removeEventListener('keydown', onUploadModalKeydown);
