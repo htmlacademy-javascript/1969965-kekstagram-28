@@ -1,5 +1,5 @@
 import { bigPicture, bigPictureModal, socialCommentCount, commentsLoader, pictureCancelButton, likesCount, commentsCount, socialCaption } from './gallery.js';
-import { onModalKeydown, onEscapeButtonClick } from './close-modal.js';
+import { onBigPicModalKeydown, onBigPicEscapeButtonClick } from './close-modals.js';
 
 const showBigPicture = (image) => {
   bigPicture.src = image.url;
@@ -12,8 +12,8 @@ const showBigPicture = (image) => {
   bigPictureModal.classList.remove('hidden');
   socialCommentCount.classList.add('hidden');
   commentsLoader.classList.add('hidden');
-  pictureCancelButton.addEventListener('click', onEscapeButtonClick);
-  document.addEventListener('keydown', onModalKeydown);
+  pictureCancelButton.addEventListener('click', onBigPicEscapeButtonClick);
+  document.addEventListener('keydown', onBigPicModalKeydown);
 };
 
 export {showBigPicture};
