@@ -3,6 +3,7 @@ import { isEscapeKey } from './helpers/is-escape-key.js';
 import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-upload-modal.js';
 import { resetScale } from './change-scale.js';
 import { form } from './validation.js';
+import { resetEffects } from './change-filters.js';
 import { pristine } from './validation.js';
 import {clearComments} from './render-comments.js';
 import { onCommentsLoaderClick,commentsLoader } from './render-comments.js';
@@ -34,6 +35,7 @@ const closeUploadPictureModal = () => {
   uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
   uploadFileField.value = '';
   resetScale();
+  resetEffects();
   form.reset();
   pristine.reset();
   document.removeEventListener('keydown', onUploadModalKeydown);
