@@ -4,13 +4,16 @@ import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-up
 import { resetScale } from './change-scale.js';
 import { form } from './validation.js';
 import { pristine } from './validation.js';
-import { resetEffects } from './change-filters.js';
+import {clearComments} from './render-comments.js';
+import { onCommentsLoaderClick,commentsLoader } from './render-comments.js';
 
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
   pictureCancelButton.removeEventListener('click', onBigPicEscapeButtonClick);
   document.removeEventListener('keydown', onBigPicModalKeydown);
+  clearComments();
+  commentsLoader.removeEventListener('click', onCommentsLoaderClick);
 };
 
 function onBigPicModalKeydown (evt) {
@@ -31,7 +34,6 @@ const closeUploadPictureModal = () => {
   uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
   uploadFileField.value = '';
   resetScale();
-  resetEffects();
   form.reset();
   pristine.reset();
   document.removeEventListener('keydown', onUploadModalKeydown);
