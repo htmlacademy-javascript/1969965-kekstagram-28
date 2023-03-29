@@ -13,7 +13,10 @@ const getHashtagsList = () => {
   return hashtagsList;
 };
 
-const pristine = new Pristine(form);
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper'
+});
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
