@@ -58,7 +58,6 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainerElement = document.querySelector('.img-upload__preview-container');
 const effectLevelElement = document.querySelector('.effect-level__value');
 
-
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
 const showSlider = () => {
