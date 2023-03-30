@@ -1,11 +1,9 @@
-import { getPictures } from './create-pictures.js';
 import { thumbnailsList } from './gallery.js';
 
-const makeThumbnails = () => {
+const makeThumbnails = (photos) => {
   const fragment = document.createDocumentFragment();
   const template = document.querySelector('#picture').content;
-  const photosList = getPictures();
-  photosList.forEach((photo)=> {
+  photos.forEach((photo)=> {
     const thumbnail = template.cloneNode(true);
     thumbnail.querySelector('.picture__img').src = photo.url;
     thumbnail.querySelector('.picture__img').alt = photo.description;
@@ -16,7 +14,7 @@ const makeThumbnails = () => {
   });
 
   thumbnailsList.appendChild(fragment);
-  return photosList;
+  return photos;
 };
 
 export { makeThumbnails };

@@ -1,5 +1,6 @@
 import { getMaxHashtagLength } from './data.js';
 import { showSuccessMessage, showErrorMessage } from './error-success-message.js';
+import { postPhotoFromUser, getPhotosFromServer } from './fetch/fetch.js';
 
 const form = document.querySelector('#upload-select-image');
 
@@ -22,10 +23,8 @@ function onUploadFormSubmit (evt) {
   evt.preventDefault();
   const valid = pristine.validate();
   if (valid) {
-    showSuccessMessage();
-    return;
+    postPhotoFromUser(new FormData(evt.target));
   }
-  showErrorMessage();
 }
 
 function checkHash () {

@@ -1,6 +1,4 @@
-import { renderGallery } from './render-gallery.js';
-import { makeThumbnails } from './make-thumbnails.js';
 
-// комментарий для задания 9.16 Помощь друга
+import { getPhotosFromServer } from './fetch/fetch.js';
 
-renderGallery(makeThumbnails());
+getPhotosFromServer();
