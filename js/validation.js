@@ -1,6 +1,5 @@
 import { getMaxHashtagLength } from './data.js';
-import { showSuccessMessage, showErrorMessage } from './error-success-message.js';
-import { postPhotoFromUser, getPhotosFromServer } from './fetch/fetch.js';
+import { postPhotoFromUser } from './fetch/fetch.js';
 
 const form = document.querySelector('#upload-select-image');
 
