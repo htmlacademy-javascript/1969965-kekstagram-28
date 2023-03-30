@@ -1,10 +1,14 @@
 import { errorBlock } from './make-error-message.js';
 import { renderGallery } from '../render-gallery.js';
 import { makeThumbnails } from '../make-thumbnails.js';
-import { showErrorMessage, showSuccessMessage } from '../error-success-message.js';
+import { showErrorMessage, showSuccessMessage } from './error-success-message.js';
+import { BASE_URL, Route, Method } from './constants-for-api.js';
+
+const load = (route, method = Method.GET, body = null) =>
+  fetch(`${BASE_URL}${route}`, {method, body});
 
 const getPhotosFromServer = () => {
-  fetch('https://28.javascript.pages.academy/kekstagram/data')
+  load(Route.GET_DATA)
     .then((response) => {
       if (response.ok) {
         return response;
@@ -21,11 +25,7 @@ const getPhotosFromServer = () => {
 };
 
 const postPhotoFromUser = (data) => {
-  fetch('https://28.javascript.pages.academy/kekstagram',
-    {
-      method: 'POST',
-      body: data
-    })
+  load(Route.SEND_DATA, Method.POST, data)
     .then((response) => {
       if (!response.ok) {
         showErrorMessage();
