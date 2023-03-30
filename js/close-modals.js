@@ -2,11 +2,12 @@ import { bigPictureModal, pictureCancelButton } from './gallery.js';
 import { isEscapeKey } from './helpers/is-escape-key.js';
 import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-upload-modal.js';
 import { resetScale } from './change-scale.js';
-import { form } from './validation.js';
+import { form } from './api/validation.js';
 import { resetEffects } from './change-filters.js';
-import { pristine } from './validation.js';
+import { pristine } from './api/validation.js';
 import {clearComments} from './render-comments.js';
 import { onCommentsLoaderClick,commentsLoader } from './render-comments.js';
+import { unblockSubmitButton } from './api/blocking-button.js';
 
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
@@ -38,6 +39,7 @@ const closeUploadPictureModal = () => {
   resetEffects();
   form.reset();
   pristine.reset();
+  unblockSubmitButton();
   document.removeEventListener('keydown', onUploadModalKeydown);
 };
 
