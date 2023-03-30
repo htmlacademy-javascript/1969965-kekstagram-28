@@ -1,5 +1,5 @@
 import { getMaxHashtagLength } from './data.js';
-import { postPhotoFromUser } from './fetch/fetch.js';
+import { postPhotoFromUser } from './api/fetch.js';
 
 const form = document.querySelector('#upload-select-image');
 

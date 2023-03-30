@@ -1,4 +1,4 @@
 
-import { getPhotosFromServer } from './fetch/fetch.js';
+import { getPhotosFromServer } from './api/fetch.js';
 
 getPhotosFromServer();
