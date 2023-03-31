@@ -97,4 +97,4 @@ pristine.addValidator(
 
 form.addEventListener('submit', onUploadFormSubmit);
 
-export { hashtagInputField, commentInputField, activeElement, form, pristine, submitButton} ;
+export { activeElement, form, pristine, submitButton} ;

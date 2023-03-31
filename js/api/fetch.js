@@ -1,8 +1,8 @@
-import { errorBlock } from './make-error-message.js';
 import { renderGallery } from '../render-gallery.js';
 import { makeThumbnails } from '../make-thumbnails.js';
-import { showErrorMessage, showSuccessMessage } from './error-success-message.js';
 import { BASE_URL, Route, Method } from './constants-for-api.js';
+import { errorBlock } from './make-error-message.js';
+import { showErrorMessage, showSuccessMessage } from './error-success-message.js';
 
 const load = (route, method = Method.GET, body = null) =>
   fetch(`${BASE_URL}${route}`, {method, body});
@@ -36,4 +36,4 @@ const postPhotoFromUser = (data) => {
     .catch(showErrorMessage);
 };
 
-export {getPhotosFromServer, postPhotoFromUser};
+export { getPhotosFromServer, postPhotoFromUser };

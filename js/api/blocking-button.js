@@ -1,5 +1,5 @@
 import { SubmitButtonText } from './constants-for-api.js';
-import { submitButton} from './validation.js';
+import { submitButton } from './validation.js';
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;

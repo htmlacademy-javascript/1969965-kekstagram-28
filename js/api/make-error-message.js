@@ -28,4 +28,4 @@ const errorBlock = (error) => {
   addEventListener('click', onButtonClick);
 };
 
-export {errorBlock};
+export { errorBlock };

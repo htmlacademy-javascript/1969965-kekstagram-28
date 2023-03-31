@@ -5,7 +5,7 @@ import { resetScale } from './change-scale.js';
 import { form } from './api/validation.js';
 import { resetEffects } from './change-filters.js';
 import { pristine } from './api/validation.js';
-import {clearComments} from './render-comments.js';
+import { clearComments } from './render-comments.js';
 import { onCommentsLoaderClick,commentsLoader } from './render-comments.js';
 import { unblockSubmitButton } from './api/blocking-button.js';
 
