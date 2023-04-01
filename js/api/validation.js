@@ -1,8 +1,9 @@
-import { getMaxHashtagLength } from './data.js';
-import { showSuccessMessage, showErrorMessage } from './error-success-message.js';
+import { getMaxHashtagLength } from '../data.js';
+import { postPhotoFromUser } from './fetch.js';
+import { blockSubmitButton } from './blocking-button.js';
 
 const form = document.querySelector('#upload-select-image');
-
+const submitButton = form.querySelector('.img-upload__submit');
 const hashtagInputField = form.querySelector('.text__hashtags');
 const commentInputField = form.querySelector('.text__description');
 const activeElement = document.activeElement;
@@ -13,16 +14,18 @@ const getHashtagsList = () => {
   return hashtagsList;
 };
 
-const pristine = new Pristine(form);
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper'
+});
 
 function onUploadFormSubmit (evt) {
   evt.preventDefault();
   const valid = pristine.validate();
   if (valid) {
-    showSuccessMessage();
-    return;
+    blockSubmitButton();
+    postPhotoFromUser(new FormData(evt.target));
   }
-  showErrorMessage();
 }
 
 function checkHash () {
@@ -94,4 +97,4 @@ pristine.addValidator(
 
 form.addEventListener('submit', onUploadFormSubmit);
 
-export { hashtagInputField, commentInputField, activeElement, form, pristine} ;
+export { activeElement, form, pristine, submitButton} ;

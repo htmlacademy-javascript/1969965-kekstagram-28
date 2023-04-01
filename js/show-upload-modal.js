@@ -1,5 +1,5 @@
 import { onUploadEscapeButtonClick, onUploadModalKeydown } from './close-modals.js';
-import { form } from './validation.js';
+import { form } from './api/validation.js';
 
 const imageUploadModal = form.querySelector('.img-upload__overlay');
 const uploadFileField = form.querySelector('#upload-file');

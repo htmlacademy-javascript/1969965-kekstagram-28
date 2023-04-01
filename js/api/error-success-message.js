@@ -1,6 +1,6 @@
-import { isEscapeKey } from './helpers/is-escape-key.js';
-import { closeUploadPictureModal } from './close-modals.js';
-import { onUploadModalKeydown } from './close-modals.js';
+import { isEscapeKey } from '../helpers/is-escape-key.js';
+import { closeUploadPictureModal } from '../close-modals.js';
+import { onUploadModalKeydown } from '../close-modals.js';
 
 const errorClass = '#error';
 const successClass = '#success';

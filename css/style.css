@@ -1335,6 +1335,16 @@ main {
           transform: translateX(-50%);
 }
 
+/* Сообщение об ошибке загрузки с сервера */
+.error__text {
+  position: relative;
+
+  margin: 0;
+  margin-bottom: 50px;
+
+  font-size: 24px;
+}
+
 
 /* Адаптивности чуток
    ========================================================================== */
@@ -1408,3 +1418,4 @@ main {
 .hidden {
   display: none;
 }
+
