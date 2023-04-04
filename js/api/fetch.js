@@ -14,6 +14,7 @@ const getPhotosFromServer = () =>
       }
       throw new Error(`${response.status}`);
     })
+    .then(window.addEventListener('load', onLoad))
     .catch((error) => {
       errorBlock(error);
     });

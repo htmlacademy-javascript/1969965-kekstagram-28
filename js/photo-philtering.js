@@ -15,7 +15,6 @@ const imgFiltersButtons = Array.from(imgFiltersForm.querySelectorAll('.img-filte
 const onLoad = () => {
   imgFilters.classList.remove('img-filters--inactive');
 };
-window.addEventListener('load', onLoad);
 
 const toggleActiveButton = (evt) => {
   for (const button of imgFiltersButtons) {
