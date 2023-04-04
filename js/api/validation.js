@@ -10,7 +10,7 @@ const activeElement = document.activeElement;
 const HASHTAG_REG_EXP = /^#[a-zа-яё0-9]{1,19}$/i;
 
 const getHashtagsList = () => {
-  const hashtagsList = hashtagInputField.value.trim().split(' ').filter((hashtag) => hashtag.trim().length);
+  const hashtagsList = hashtagInputField.value.toLowerCase().trim().split(' ').filter((hashtag) => hashtag.trim().length);
   return hashtagsList;
 };
 
@@ -97,4 +97,4 @@ pristine.addValidator(
 
 form.addEventListener('submit', onUploadFormSubmit);
 
-export { activeElement, form, pristine, submitButton} ;
+export { activeElement, form, pristine, submitButton } ;
