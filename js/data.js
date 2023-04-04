@@ -17,5 +17,15 @@ const getMaxHashtagLength = () => {
   return MAX_HASHTAGS_LENGTH;
 };
 
-export { getNumberOfComments, getNumberOfPictures, getScaleStep, getMaxHashtagLength };
+const getTimeoutDelay = () => {
+  const TIMEOUT_DELAY = 500;
+  return TIMEOUT_DELAY;
+};
+
+const getNumberOfRandomPhotos = () => {
+  const RANDOM_PHOTOS_NUMBER = 10;
+  return RANDOM_PHOTOS_NUMBER;
+};
+
+export { getNumberOfComments, getNumberOfPictures, getScaleStep, getMaxHashtagLength, getTimeoutDelay, getNumberOfRandomPhotos };
 

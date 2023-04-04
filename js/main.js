@@ -1,3 +1,9 @@
-import { getPhotosFromServer } from './api/fetch.js';
+// import { onImgFilterButtonClick } from './photo-philtering.js';
+import { dataFromServer } from './api/fetch.js';
+import { renderGallery } from './render-gallery.js';
+import { makeThumbnails } from './make-thumbnails.js';
+import { thumbnailsList } from './gallery.js';
 
-getPhotosFromServer();
+renderGallery(makeThumbnails(dataFromServer, thumbnailsList));
+
+export { renderGallery };
