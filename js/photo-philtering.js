@@ -6,7 +6,7 @@ import { shuffle } from './helpers/shuffle-array.js';
 import { debounce } from './helpers/debounce.js';
 import { getNumberOfRandomPhotos } from './data.js';
 import { getClonedData } from './helpers/get-cloned-data.js';
-import { compareLikes } from './helpers/compare-data-by-likes.js';
+import { compareComments } from './helpers/compare-data-by-comments.js';
 
 const imgFilters = document.querySelector('.img-filters');
 const imgFiltersForm = document.querySelector('.img-filters__form');
@@ -33,7 +33,7 @@ const filterPhotoRandom = () => {
 
 const filterPhotoDiscussed = () => {
   const data = getClonedData(dataFromServer);
-  const sortedDataByLikes = data.sort(compareLikes);
+  const sortedDataByLikes = data.sort(compareComments);
   renderGallery((makeThumbnails(sortedDataByLikes, thumbnailsList)));
 };
 
