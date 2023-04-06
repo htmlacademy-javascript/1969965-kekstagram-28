@@ -1,6 +1,7 @@
-import { thumbnailsList } from './gallery.js';
 
-const makeThumbnails = (photos) => {
+const makeThumbnails = (photos, container) => {
+  container.querySelectorAll('a').forEach((element) => element.remove());
+
   const fragment = document.createDocumentFragment();
   const template = document.querySelector('#picture').content;
   photos.forEach((photo)=> {
@@ -13,7 +14,7 @@ const makeThumbnails = (photos) => {
     fragment.appendChild(thumbnail);
   });
 
-  thumbnailsList.appendChild(fragment);
+  container.appendChild(fragment);
   return photos;
 };
 
