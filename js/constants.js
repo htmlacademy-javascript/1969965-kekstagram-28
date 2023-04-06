@@ -65,4 +65,6 @@ const SURNAMES = [
   'Карлсон'
 ];
 
-export {PHOTO_DESCRIPTIONS, MESSAGES, NAMES, SURNAMES };
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+
+export {PHOTO_DESCRIPTIONS, MESSAGES, NAMES, SURNAMES, FILE_TYPES };

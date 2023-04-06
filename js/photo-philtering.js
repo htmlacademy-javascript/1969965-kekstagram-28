@@ -12,10 +12,6 @@ const imgFilters = document.querySelector('.img-filters');
 const imgFiltersForm = document.querySelector('.img-filters__form');
 const imgFiltersButtons = Array.from(imgFiltersForm.querySelectorAll('.img-filters__button'));
 
-const onLoad = () => {
-  imgFilters.classList.remove('img-filters--inactive');
-};
-
 const toggleActiveButton = (evt) => {
   for (const button of imgFiltersButtons) {
     if (button.classList.contains('img-filters__button--active')) {
@@ -61,4 +57,4 @@ const onImgFilterButtonClick = (evt) => {
 
 imgFiltersForm.addEventListener('click', onImgFilterButtonClick);
 
-export { onImgFilterButtonClick, onLoad };
+export { onImgFilterButtonClick, imgFilters };

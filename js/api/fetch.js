@@ -1,7 +1,7 @@
 import { BASE_URL, Route, Method } from './constants-for-api.js';
 import { errorBlock } from './make-error-message.js';
 import { showErrorMessage, showSuccessMessage } from './error-success-message.js';
-import { onLoad } from '../photo-philtering.js';
+import { onLoad } from '../on-load.js';
 
 const load = (route, method = Method.GET, body = null) =>
   fetch(`${BASE_URL}${route}`, {method, body});
