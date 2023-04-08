@@ -1,21 +1,22 @@
-import { bigPictureModal, pictureCancelButton } from './gallery.js';
+import { bigPictureModalElement, pictureCancelButtonElement } from './gallery.js';
 import { isEscapeKey } from './helpers/is-escape-key.js';
-import { uploadCancelButton, imageUploadModal, uploadFileField } from './show-upload-modal.js';
+import { uploadCancelButtonElement, imageUploadModalElement, uploadFileFieldElement } from './show-upload-modal.js';
 import { resetScale } from './change-scale.js';
-import { form } from './api/validation.js';
+import { formElement } from './api/validation.js';
 import { resetEffects } from './change-filters.js';
 import { pristine } from './api/validation.js';
 import { clearComments } from './render-comments.js';
-import { onCommentsLoaderClick,commentsLoader } from './render-comments.js';
+import { onCommentsLoaderClick,commentsLoaderElement } from './render-comments.js';
 import { unblockSubmitButton } from './api/blocking-button.js';
+import { commentInputFieldElement } from './api/validation.js';
 
 const closeBigPictureModal = () => {
-  bigPictureModal.classList.add('hidden');
+  bigPictureModalElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  pictureCancelButton.removeEventListener('click', onBigPicEscapeButtonClick);
+  pictureCancelButtonElement.removeEventListener('click', onBigPicEscapeButtonClick);
   document.removeEventListener('keydown', onBigPicModalKeydown);
   clearComments();
-  commentsLoader.removeEventListener('click', onCommentsLoaderClick);
+  commentsLoaderElement.removeEventListener('click', onCommentsLoaderClick);
 };
 
 function onBigPicModalKeydown (evt) {
@@ -31,23 +32,23 @@ function onBigPicEscapeButtonClick (evt) {
 }
 
 const closeUploadPictureModal = () => {
-  imageUploadModal.classList.add('hidden');
+  imageUploadModalElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  uploadCancelButton.removeEventListener('click', onUploadEscapeButtonClick);
-  uploadFileField.value = '';
+  uploadCancelButtonElement.removeEventListener('click', onUploadEscapeButtonClick);
+  uploadFileFieldElement.value = '';
   resetScale();
   resetEffects();
-  form.reset();
+  formElement.reset();
   pristine.reset();
   unblockSubmitButton();
   document.removeEventListener('keydown', onUploadModalKeydown);
 };
 
 function onUploadModalKeydown (evt) {
-  const activeElement = document.activeElement.attributes.type.value;
+  const isFocused = (document.activeElement === commentInputFieldElement);
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    if (activeElement === 'text') {
+    if (isFocused) {
       evt.stopPropagation();
     } else {
       closeUploadPictureModal();
@@ -60,4 +61,4 @@ function onUploadEscapeButtonClick (evt) {
   closeUploadPictureModal();
 }
 
-export { onBigPicModalKeydown, onBigPicEscapeButtonClick, onUploadEscapeButtonClick, onUploadModalKeydown, closeUploadPictureModal};
+export { onBigPicModalKeydown, onBigPicEscapeButtonClick, onUploadEscapeButtonClick, onUploadModalKeydown, closeUploadPictureModal };

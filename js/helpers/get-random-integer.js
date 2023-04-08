@@ -5,4 +5,4 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-export {getRandomInteger};
+export { getRandomInteger };

@@ -1,17 +1,18 @@
 import { isEscapeKey } from '../helpers/is-escape-key.js';
 import { closeUploadPictureModal } from '../close-modals.js';
 import { onUploadModalKeydown } from '../close-modals.js';
+import { unblockSubmitButton } from './blocking-button.js';
 
 const errorClass = '#error';
 const successClass = '#success';
 
 const makeMessageModal = (className) => {
-  const template = document.querySelector(className).content;
-  const fragment = template.cloneNode(true);
-  const messageWrapper = document.createElement('div');
-  messageWrapper.append(fragment);
-  const message = messageWrapper.querySelector(`.${className.substring(1)}`);
-  return message;
+  const templateElement = document.querySelector(className).content;
+  const fragmentElement = templateElement.cloneNode(true);
+  const messageWrapperElement = document.createElement('div');
+  messageWrapperElement.append(fragmentElement);
+  const messageElement = messageWrapperElement.querySelector(`.${className.substring(1)}`);
+  return messageElement;
 };
 
 function makeErrorMessage () {
@@ -22,26 +23,27 @@ function makeSuccessMessage() {
   return makeMessageModal(successClass);
 }
 
-const errorField = makeErrorMessage();
-const successField = makeSuccessMessage();
-const successButton = successField.querySelector('.success__button');
-const errorButton = errorField.querySelector('.error__button');
-const successModal = successField.querySelector('.success__inner');
-const errorModal = errorField.querySelector('.error__inner');
+const errorFieldElement = makeErrorMessage();
+const successFieldElement = makeSuccessMessage();
+const successButtonElement = successFieldElement.querySelector('.success__button');
+const errorButtonElement = errorFieldElement.querySelector('.error__button');
+const successModalElement = successFieldElement.querySelector('.success__inner');
+const errorModalElement = errorFieldElement.querySelector('.error__inner');
 
 const showSuccessMessage = () => {
-  document.body.append(successField);
-  successButton.addEventListener('click', onSuccessButtonClick);
+  document.body.append(successFieldElement);
+  successButtonElement.addEventListener('click', onSuccessButtonClick);
   document.addEventListener('keydown', onSuccessEscapeKeydown);
-  successField.addEventListener('click', onSuccessFieldClick);
+  successFieldElement.addEventListener('click', onSuccessFieldClick);
 };
 
 const closeSuccessMesage = () => {
   closeUploadPictureModal();
-  successField.remove();
-  successButton.removeEventListener('click', onSuccessButtonClick);
+  unblockSubmitButton();
+  successFieldElement.remove();
+  successButtonElement.removeEventListener('click', onSuccessButtonClick);
   document.removeEventListener('keydown', onSuccessEscapeKeydown);
-  successField.removeEventListener('click', onSuccessFieldClick);
+  successFieldElement.removeEventListener('click', onSuccessFieldClick);
 };
 
 function onSuccessButtonClick (evt) {
@@ -57,24 +59,25 @@ function onSuccessEscapeKeydown (evt) {
 }
 
 function onSuccessFieldClick (evt) {
-  if (evt.target !== successModal) {
+  if (evt.target !== successModalElement) {
     closeSuccessMesage();
   }
 }
 
 const showErrorMessage = () => {
-  document.body.append(errorField);
-  errorButton.addEventListener('click', onErrorButtonClick);
+  document.body.append(errorFieldElement);
+  errorButtonElement.addEventListener('click', onErrorButtonClick);
   document.addEventListener('keydown', onErrorEscapeKeydown);
-  errorField.addEventListener('click', onErrorFieldClick);
+  errorFieldElement.addEventListener('click', onErrorFieldClick);
   document.removeEventListener('keydown', onUploadModalKeydown);
 };
 
 const closeErrorMesage = () => {
-  errorField.remove();
-  errorButton.removeEventListener('click', onErrorButtonClick);
+  errorFieldElement.remove();
+  unblockSubmitButton();
+  errorButtonElement.removeEventListener('click', onErrorButtonClick);
   document.removeEventListener('keydown', onErrorEscapeKeydown);
-  errorField.removeEventListener('click', onErrorFieldClick);
+  errorFieldElement.removeEventListener('click', onErrorFieldClick);
 };
 
 function onErrorButtonClick (evt) {
@@ -90,9 +93,9 @@ function onErrorEscapeKeydown (evt) {
 }
 
 function onErrorFieldClick (evt) {
-  if (evt.target !== errorModal) {
+  if (evt.target !== errorModalElement) {
     closeErrorMesage();
   }
 }
 
-export {errorField, successField, showSuccessMessage, onSuccessButtonClick, showErrorMessage};
+export { errorFieldElement, successFieldElement, showSuccessMessage, onSuccessButtonClick, showErrorMessage };

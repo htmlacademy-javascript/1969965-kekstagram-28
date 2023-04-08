@@ -1,30 +1,30 @@
 const getNumberOfComments = () => {
-  const NUMBER_OF_COMMENTS = 15;
-  return NUMBER_OF_COMMENTS;
+  const numberOfComments = 15;
+  return numberOfComments;
 };
 const getNumberOfPictures = () => {
-  const NUMBER_OF_PICTURES = 25;
-  return NUMBER_OF_PICTURES;
+  const numberOfPictures = 25;
+  return numberOfPictures;
 };
 
 const getScaleStep = () => {
-  const STEP = 25;
-  return STEP;
+  const step = 25;
+  return step;
 };
 
 const getMaxHashtagLength = () => {
-  const MAX_HASHTAGS_LENGTH = 5;
-  return MAX_HASHTAGS_LENGTH;
+  const maxHashtagsLength = 5;
+  return maxHashtagsLength;
 };
 
 const getTimeoutDelay = () => {
-  const TIMEOUT_DELAY = 500;
-  return TIMEOUT_DELAY;
+  const timeoutDelay = 500;
+  return timeoutDelay;
 };
 
 const getNumberOfRandomPhotos = () => {
-  const RANDOM_PHOTOS_NUMBER = 10;
-  return RANDOM_PHOTOS_NUMBER;
+  const randomPhotosNumber = 10;
+  return randomPhotosNumber;
 };
 
 export { getNumberOfComments, getNumberOfPictures, getScaleStep, getMaxHashtagLength, getTimeoutDelay, getNumberOfRandomPhotos };

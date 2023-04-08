@@ -1,20 +1,19 @@
 import { getMaxHashtagLength } from '../data.js';
 import { postPhotoFromUser } from './fetch.js';
 import { blockSubmitButton } from './blocking-button.js';
+import { HASHTAG_REG_EXP } from '../constants.js';
 
-const form = document.querySelector('#upload-select-image');
-const submitButton = form.querySelector('.img-upload__submit');
-const hashtagInputField = form.querySelector('.text__hashtags');
-const commentInputField = form.querySelector('.text__description');
-const activeElement = document.activeElement;
-const HASHTAG_REG_EXP = /^#[a-zа-яё0-9]{1,19}$/i;
+const formElement = document.querySelector('#upload-select-image');
+const submitButtonElement = formElement.querySelector('.img-upload__submit');
+const hashtagInputFieldElement = formElement.querySelector('.text__hashtags');
+const commentInputFieldElement = formElement.querySelector('.text__description');
 
 const getHashtagsList = () => {
-  const hashtagsList = hashtagInputField.value.toLowerCase().trim().split(' ').filter((hashtag) => hashtag.trim().length);
+  const hashtagsList = hashtagInputFieldElement.value.toLowerCase().trim().split(' ').filter((hashtag) => hashtag.trim().length);
   return hashtagsList;
 };
 
-const pristine = new Pristine(form, {
+const pristine = new Pristine(formElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper'
 });
@@ -51,7 +50,7 @@ function checkHashtag () {
 }
 
 function checkTextArea () {
-  return commentInputField.value.length <= 140;
+  return commentInputFieldElement.value.length <= 140;
 }
 
 function checkSingleHashtagLength () {
@@ -60,41 +59,41 @@ function checkSingleHashtagLength () {
 }
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputFieldElement,
   checkHashtagsLength,
   'Нельзя указать больше пяти хэш-тегов'
 );
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputFieldElement,
   checkSingleHashtagLength,
   'Хеш-тег не может состоять только из одной решётки'
 );
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputFieldElement,
   checkHash,
   'Хэш-тег должен начинаться с символа # (решётка)'
 );
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputFieldElement,
   checkHashtagsUniqueness,
   'Один и тот же хэш-тег не может быть использован дважды'
 );
 
 pristine.addValidator(
-  hashtagInputField,
+  hashtagInputFieldElement,
   checkHashtag,
   'Строка после решётки должна состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и т. п.), символы пунктуации (тире, дефис, запятая и т. п.), эмодзи и т. д.'
 );
 
 pristine.addValidator(
-  commentInputField,
+  commentInputFieldElement,
   checkTextArea,
   'Длина сообщения не больше 140 символов'
 );
 
-form.addEventListener('submit', onUploadFormSubmit);
+formElement.addEventListener('submit', onUploadFormSubmit);
 
-export { activeElement, form, pristine, submitButton } ;
+export { formElement, pristine, submitButtonElement, commentInputFieldElement } ;

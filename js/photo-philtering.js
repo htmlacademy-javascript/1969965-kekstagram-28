@@ -1,16 +1,16 @@
 import { dataFromServer } from './api/fetch.js';
 import { renderGallery, onThumbnailsClick } from './render-gallery.js';
 import { makeThumbnails } from './make-thumbnails.js';
-import { thumbnailsList } from './gallery.js';
-import { shuffle } from './helpers/shuffle-array.js';
-import { debounce } from './helpers/debounce.js';
+import { thumbnailsListElement } from './gallery.js';
+import { shuffleArray } from './helpers/shuffle-array.js';
+import { debounceFunction } from './helpers/debounce-function.js';
 import { getNumberOfRandomPhotos } from './data.js';
 import { getClonedData } from './helpers/get-cloned-data.js';
 import { compareComments } from './helpers/compare-data-by-comments.js';
 
-const imgFilters = document.querySelector('.img-filters');
-const imgFiltersForm = document.querySelector('.img-filters__form');
-const imgFiltersButtons = Array.from(imgFiltersForm.querySelectorAll('.img-filters__button'));
+const imgFiltersElement = document.querySelector('.img-filters');
+const imgFiltersFormElement = document.querySelector('.img-filters__form');
+const imgFiltersButtons = Array.from(imgFiltersFormElement.querySelectorAll('.img-filters__button'));
 
 const toggleActiveButton = (evt) => {
   for (const button of imgFiltersButtons) {
@@ -23,14 +23,14 @@ const toggleActiveButton = (evt) => {
 
 const filterPhotoRandom = () => {
   const data = getClonedData(dataFromServer);
-  const shuffledData = shuffle(data).slice(0, getNumberOfRandomPhotos());
-  renderGallery((makeThumbnails(shuffledData, thumbnailsList)));
+  const shuffledData = shuffleArray(data).slice(0, getNumberOfRandomPhotos());
+  renderGallery((makeThumbnails(shuffledData, thumbnailsListElement)));
 };
 
 const filterPhotoDiscussed = () => {
   const data = getClonedData(dataFromServer);
-  const sortedDataByLikes = data.sort(compareComments);
-  renderGallery((makeThumbnails(sortedDataByLikes, thumbnailsList)));
+  const sortedDataByComments = data.sort(compareComments);
+  renderGallery((makeThumbnails(sortedDataByComments, thumbnailsListElement)));
 };
 
 const filterPhotos = (evt) => {
@@ -44,17 +44,17 @@ const filterPhotos = (evt) => {
     return;
   }
 
-  renderGallery(makeThumbnails(dataFromServer, thumbnailsList));
+  renderGallery(makeThumbnails(dataFromServer, thumbnailsListElement));
 };
 
-const debouncedFilterPhotos = debounce(filterPhotos);
+const debouncedFilterPhotos = debounceFunction(filterPhotos);
 
 const onImgFilterButtonClick = (evt) => {
-  thumbnailsList.removeEventListener('click', onThumbnailsClick);
+  thumbnailsListElement.removeEventListener('click', onThumbnailsClick);
   toggleActiveButton(evt);
   debouncedFilterPhotos(evt);
 };
 
-imgFiltersForm.addEventListener('click', onImgFilterButtonClick);
+imgFiltersFormElement.addEventListener('click', onImgFilterButtonClick);
 
-export { onImgFilterButtonClick, imgFilters };
+export { onImgFilterButtonClick, imgFiltersElement };

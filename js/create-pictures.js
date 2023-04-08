@@ -29,4 +29,4 @@ const getPictures = () =>
     createPicture(pictureIndex + 1)
   );
 
-export {getPictures};
+export { getPictures };
