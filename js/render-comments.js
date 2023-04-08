@@ -1,40 +1,40 @@
-import { socialCommentsContainer, socialCommentCount } from './gallery.js';
+import { socialCommentsContainerElement, socialCommentCountElement } from './gallery.js';
 
-const commentsLoader = document.querySelector('.social__comments-loader');
+const commentsLoaderElement = document.querySelector('.social__comments-loader');
 const COMMENTS_PER_PORTION = 5;
 let commentsShown = 0;
 let pictureToGetComments;
 
 const clearComments = () => {
-  socialCommentsContainer.innerHTML = '';
+  socialCommentsContainerElement.innerHTML = '';
   commentsShown = 0;
 };
 
 const getComment = (picture, i) => {
   const {avatar, name, message} = picture.comments[i];
-  const comment = document.createElement('li');
-  const commentAvatar = document.createElement('img');
-  const commentText = document.createElement('p');
-  comment.classList.add('social__comment');
-  commentAvatar.classList.add('social__picture');
-  commentText.classList.add('social__text');
-  commentAvatar.src = avatar;
-  commentAvatar.alt = name;
-  commentAvatar.width = '35';
-  commentAvatar.height = '35';
-  commentText.textContent = message;
-  comment.append(commentAvatar, commentText);
-  return comment;
+  const commentElement = document.createElement('li');
+  const commentAvatarElement = document.createElement('img');
+  const commentTextElement = document.createElement('p');
+  commentElement.classList.add('social__comment');
+  commentAvatarElement.classList.add('social__picture');
+  commentTextElement.classList.add('social__text');
+  commentAvatarElement.src = avatar;
+  commentAvatarElement.alt = name;
+  commentAvatarElement.width = '35';
+  commentAvatarElement.height = '35';
+  commentTextElement.textContent = message;
+  commentElement.append(commentAvatarElement, commentTextElement);
+  return commentElement;
 };
 
 const renderComments = (picture) => {
   commentsShown += COMMENTS_PER_PORTION;
 
   if (commentsShown >= picture.comments.length) {
-    commentsLoader.classList.add('hidden');
+    commentsLoaderElement.classList.add('hidden');
     commentsShown = picture.comments.length;
   } else {
-    commentsLoader.classList.remove('hidden');
+    commentsLoaderElement.classList.remove('hidden');
   }
 
   const commentsFragment = document.createDocumentFragment();
@@ -43,9 +43,9 @@ const renderComments = (picture) => {
     const comment = getComment(picture, i);
     commentsFragment.append(comment);
   }
-  socialCommentsContainer.innerHTML = '';
-  socialCommentsContainer.append(commentsFragment);
-  socialCommentCount.innerHTML = `${commentsShown} из <span class="comments-count">${picture.comments.length}</span> комментариев`;
+  socialCommentsContainerElement.innerHTML = '';
+  socialCommentsContainerElement.append(commentsFragment);
+  socialCommentCountElement.innerHTML = `${commentsShown} из <span class="comments-count">${picture.comments.length}</span> комментариев`;
   pictureToGetComments = picture;
 };
 
@@ -53,4 +53,4 @@ function onCommentsLoaderClick () {
   renderComments(pictureToGetComments);
 }
 
-export {renderComments, commentsShown, clearComments, onCommentsLoaderClick, commentsLoader};
+export { renderComments, commentsShown, clearComments, onCommentsLoaderClick, commentsLoaderElement };

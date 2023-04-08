@@ -1,13 +1,13 @@
-const thumbnailsList = document.querySelector('.pictures');
-const bigPictureModal = document.querySelector('.big-picture');
-const pictureCancelButton = bigPictureModal.querySelector('#picture-cancel');
-const socialCommentCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
-const bigPicture = document.querySelector('.big-picture__img img');
-const likesCount = bigPictureModal.querySelector('.likes-count');
-const commentsCount = bigPictureModal.querySelector('.comments-count');
-const socialCaption = bigPictureModal.querySelector('.social__caption');
-const socialCommentsContainer = bigPictureModal.querySelector('.social__comments');
+const thumbnailsListElement = document.querySelector('.pictures');
+const bigPictureModalElement = document.querySelector('.big-picture');
+const pictureCancelButtonElement = bigPictureModalElement.querySelector('#picture-cancel');
+const socialCommentCountElement = document.querySelector('.social__comment-count');
+const commentsLoaderElement = document.querySelector('.comments-loader');
+const bigPictureElement = document.querySelector('.big-picture__img img');
+const likesCountElement = bigPictureModalElement.querySelector('.likes-count');
+const commentsCountElement = bigPictureModalElement.querySelector('.comments-count');
+const socialCaptionElement = bigPictureModalElement.querySelector('.social__caption');
+const socialCommentsContainerElement = bigPictureModalElement.querySelector('.social__comments');
 
-export { thumbnailsList, bigPictureModal, pictureCancelButton, socialCommentCount, commentsLoader, bigPicture, likesCount, commentsCount, socialCaption, socialCommentsContainer };
+export { thumbnailsListElement, bigPictureModalElement, pictureCancelButtonElement, socialCommentCountElement, commentsLoaderElement, bigPictureElement, likesCountElement, commentsCountElement, socialCaptionElement, socialCommentsContainerElement };
 

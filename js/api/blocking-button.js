@@ -1,14 +1,14 @@
 import { SubmitButtonText } from './constants-for-api.js';
-import { submitButton } from './validation.js';
+import { submitButtonElement } from './validation.js';
 
 const blockSubmitButton = () => {
-  submitButton.disabled = true;
-  submitButton.textContent = SubmitButtonText.SENDING;
+  submitButtonElement.disabled = true;
+  submitButtonElement.textContent = SubmitButtonText.SENDING;
 };
 
 const unblockSubmitButton = () => {
-  submitButton.disabled = false;
-  submitButton.textContent = SubmitButtonText.IDLE;
+  submitButtonElement.disabled = false;
+  submitButtonElement.textContent = SubmitButtonText.IDLE;
 };
 
-export {submitButton, blockSubmitButton, unblockSubmitButton};
+export { submitButtonElement, blockSubmitButton, unblockSubmitButton };

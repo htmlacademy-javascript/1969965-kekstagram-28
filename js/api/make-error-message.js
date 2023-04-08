@@ -1,31 +1,28 @@
-const errorBlock = (error) => {
-  const section = document.createElement('section');
-  const errorContainer = document.createElement('div');
-  const errorMessageStatus = document.createElement('h2');
-  const errorText = document.createElement('p');
-  const button = document.createElement('button');
+const makeErrorBlock = () => {
+  const sectionElement = document.createElement('section');
+  const errorContainerElement = document.createElement('div');
+  const errorMessageStatusElement = document.createElement('h2');
+  const buttonElement = document.createElement('button');
 
-  section.classList.add('error');
-  errorContainer.classList.add('error__inner');
-  errorMessageStatus.classList.add('error__title');
-  errorText.classList.add('error__text');
-  button.classList.add('error__button');
+  sectionElement.classList.add('error');
+  errorContainerElement.classList.add('error__inner');
+  errorMessageStatusElement.classList.add('error__title');
+  buttonElement.classList.add('error__button');
 
-  errorMessageStatus.textContent = `${error}`;
-  errorText.textContent = 'Ошибка загрузки данных с сервера';
-  button.setAttribute('type', 'button');
-  button.textContent = 'Обновить страницу';
-  errorContainer.append(errorMessageStatus, errorText, button);
-  section.append(errorContainer);
-  section.querySelector('error__button');
-  document.body.append(section);
+  errorMessageStatusElement.textContent = 'Ошибка загрузки данных с сервера';
+  buttonElement.setAttribute('type', 'button');
+  buttonElement.textContent = 'Обновить страницу';
+  errorContainerElement.append(errorMessageStatusElement, buttonElement);
+  sectionElement.append(errorContainerElement);
+  sectionElement.querySelector('error__button');
+  document.body.append(sectionElement);
 
   const onButtonClick = () => {
-    section.remove();
+    sectionElement.remove();
     location.reload();
   };
 
   addEventListener('click', onButtonClick);
 };
 
-export { errorBlock };
+export { makeErrorBlock };

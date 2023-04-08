@@ -6,4 +6,4 @@ const createSerialNumberGenerator = () => {
   };
 };
 
-export {createSerialNumberGenerator};
+export { createSerialNumberGenerator };

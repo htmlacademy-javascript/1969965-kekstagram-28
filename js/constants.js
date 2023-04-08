@@ -67,4 +67,6 @@ const SURNAMES = [
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
-export {PHOTO_DESCRIPTIONS, MESSAGES, NAMES, SURNAMES, FILE_TYPES };
+const HASHTAG_REG_EXP = /^#[a-zа-яё0-9]{1,19}$/i;
+
+export { PHOTO_DESCRIPTIONS, MESSAGES, NAMES, SURNAMES, FILE_TYPES, HASHTAG_REG_EXP };

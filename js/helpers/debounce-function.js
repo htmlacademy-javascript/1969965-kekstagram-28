@@ -1,6 +1,6 @@
 import { getTimeoutDelay } from '../data.js';
 
-const debounce = (callback, timeoutDelay = getTimeoutDelay()) => {
+const debounceFunction = (callback, timeoutDelay = getTimeoutDelay()) => {
   let timeoutId = null;
   return (...rest) => {
     if (timeoutId) {
@@ -13,4 +13,4 @@ const debounce = (callback, timeoutDelay = getTimeoutDelay()) => {
   };
 };
 
-export { debounce };
+export { debounceFunction };

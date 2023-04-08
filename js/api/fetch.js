@@ -1,5 +1,5 @@
 import { BASE_URL, Route, Method } from './constants-for-api.js';
-import { errorBlock } from './make-error-message.js';
+import { makeErrorBlock } from './make-error-message.js';
 import { showErrorMessage, showSuccessMessage } from './error-success-message.js';
 import { onLoad } from '../on-load.js';
 
@@ -15,8 +15,8 @@ const getPhotosFromServer = () =>
       throw new Error(`${response.status}`);
     })
     .then(window.addEventListener('load', onLoad))
-    .catch((error) => {
-      errorBlock(error);
+    .catch(() => {
+      makeErrorBlock();
     });
 
 const postPhotoFromUser = (data) => {

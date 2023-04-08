@@ -1,47 +1,47 @@
-import { imageUploadModal, uploadedImage } from './show-upload-modal.js';
+import { imageUploadModalElement, uploadedImageElement } from './show-upload-modal.js';
 import { getScaleStep } from './data.js';
 
-const controlSmaller = imageUploadModal.querySelector('.scale__control--smaller ');
-const controlBigger = imageUploadModal.querySelector('.scale__control--bigger');
-const scaleValueField = imageUploadModal.querySelector('.scale__control--value');
+const controlSmallerElement = imageUploadModalElement.querySelector('.scale__control--smaller ');
+const controlBiggerElement = imageUploadModalElement.querySelector('.scale__control--bigger');
+const scaleValueFieldElement = imageUploadModalElement.querySelector('.scale__control--value');
 
 const changeScaleValue = () => {
-  controlSmaller.addEventListener('click', onControlSmallerClick);
-  controlBigger.addEventListener('click', onControlBiggerClick);
+  controlSmallerElement.addEventListener('click', onControlSmallerClick);
+  controlBiggerElement.addEventListener('click', onControlBiggerClick);
 };
 
 function onControlSmallerClick (evt) {
-  scaling(evt);
+  scaleImage(evt);
 }
 
 function onControlBiggerClick (evt) {
-  scaling(evt);
+  scaleImage(evt);
 }
 
-function scaling(evt) {
-  let currentValue = Number(scaleValueField.value.slice(0, -1));
+function scaleImage(evt) {
+  let currentValue = Number(scaleValueFieldElement.value.slice(0, -1));
 
-  if (evt.target === controlSmaller) {
+  if (evt.target === controlSmallerElement) {
     if (currentValue > getScaleStep()) {
       currentValue -= getScaleStep();
-      scaleValueField.value = `${currentValue}%`;
+      scaleValueFieldElement.value = `${currentValue}%`;
     }
   }
 
-  if (evt.target === controlBigger) {
+  if (evt.target === controlBiggerElement) {
     if (currentValue <= 100 - getScaleStep()) {
       currentValue += getScaleStep();
-      scaleValueField.value = `${currentValue}%`;
+      scaleValueFieldElement.value = `${currentValue}%`;
     }
   }
-  uploadedImage.style.transform = `scale(${currentValue / 100})`;
+  uploadedImageElement.style.transform = `scale(${currentValue / 100})`;
 }
 
 const resetScale = () => {
-  scaleValueField.value = '100%';
-  uploadedImage.style.transform = 'scale(1)';
+  scaleValueFieldElement.value = '100%';
+  uploadedImageElement.style.transform = 'scale(1)';
 };
 
 changeScaleValue();
 
-export {changeScaleValue, scaleValueField, resetScale};
+export {changeScaleValue, scaleValueFieldElement, resetScale};
