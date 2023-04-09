@@ -1,4 +1,4 @@
-import { isEscapeKey } from '../helpers/is-escape-key.js';
+import { isEscapeKey } from '../utils.js';
 import { closeUploadPictureModal } from '../close-modals.js';
 import { onUploadModalKeydown } from '../close-modals.js';
 import { unblockSubmitButton } from './blocking-button.js';

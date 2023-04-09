@@ -1,4 +1,3 @@
-
 const makeThumbnails = (photos, container) => {
   container.querySelectorAll('a').forEach((element) => element.remove());
 

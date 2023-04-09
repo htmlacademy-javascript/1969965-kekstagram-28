@@ -1,5 +1,5 @@
 import { bigPictureModalElement, pictureCancelButtonElement } from './gallery.js';
-import { isEscapeKey } from './helpers/is-escape-key.js';
+import { isEscapeKey } from './utils.js';
 import { uploadCancelButtonElement, imageUploadModalElement, uploadFileFieldElement } from './show-upload-modal.js';
 import { resetScale } from './change-scale.js';
 import { formElement } from './api/validation.js';
