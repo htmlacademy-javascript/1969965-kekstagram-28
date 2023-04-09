@@ -1,9 +1,9 @@
-import { getRandomInteger } from './helpers/get-random-integer.js';
-import { getRandomName } from './helpers/get-random-name.js';
-import { getRandomMessage } from './helpers/get-random-message.js';
-import { getPhotoDescription } from './helpers/get-photo-description.js';
+import { getRandomInteger } from './utils.js';
+import { getRandomName } from './get-random-name.js';
+import { getRandomMessage } from './get-random-message.js';
+import { getPhotoDescription } from './get-photo-description.js';
 import { getNumberOfComments, getNumberOfPictures } from './data.js';
-import { getCommentId } from './helpers/get-comment-id.js';
+import { getCommentId } from './get-comment-id.js';
 
 const createComment = () => (
   {

@@ -2,11 +2,11 @@ import { dataFromServer } from './api/fetch.js';
 import { renderGallery, onThumbnailsClick } from './render-gallery.js';
 import { makeThumbnails } from './make-thumbnails.js';
 import { thumbnailsListElement } from './gallery.js';
-import { shuffleArray } from './helpers/shuffle-array.js';
-import { debounceFunction } from './helpers/debounce-function.js';
+import { shuffleArray } from './utils.js';
+import { debounceFunction } from './utils.js';
 import { getNumberOfRandomPhotos } from './data.js';
-import { getClonedData } from './helpers/get-cloned-data.js';
-import { compareComments } from './helpers/compare-data-by-comments.js';
+import { getClonedData } from './utils.js';
+import { compareComments } from './utils.js';
 
 const imgFiltersElement = document.querySelector('.img-filters');
 const imgFiltersFormElement = document.querySelector('.img-filters__form');

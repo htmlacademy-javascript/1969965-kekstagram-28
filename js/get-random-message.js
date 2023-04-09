@@ -1,4 +1,4 @@
-import { getRandomArrayElement } from './get-random-array-element.js';
+import { getRandomArrayElement } from './utils.js';
 import { MESSAGES } from '../constants.js';
 
 const getRandomMessage = () => `${getRandomArrayElement(MESSAGES)}`;

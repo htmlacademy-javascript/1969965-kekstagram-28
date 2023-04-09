@@ -1,4 +1,4 @@
-import { createSerialNumberGenerator } from './serial-generator.js';
+import { createSerialNumberGenerator } from './utils.js';
 
 import { PHOTO_DESCRIPTIONS } from '../constants.js';
 const generateDescriptionIndex = createSerialNumberGenerator();
